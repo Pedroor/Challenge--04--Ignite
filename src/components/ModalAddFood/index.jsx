@@ -6,7 +6,8 @@ import { Modal } from "../Modal";
 import Input from "../Input";
 
 export function ModalAddFood({ isOpen, setIsOpen, handleAddFood }) {
-  const formRef = useRef();
+  const formRef = useRef(null);
+
   async function handleSubmit(data) {
     handleAddFood(data);
     setIsOpen();

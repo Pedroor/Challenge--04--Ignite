@@ -28,7 +28,7 @@ export function Dashboard() {
         ...food,
         available: true,
       });
-      setFoods({ foods: [...foods, response.data] });
+      setFoods([...foods, response.data]);
     } catch (err) {
       console.log(err);
     }
@@ -88,14 +88,16 @@ export function Dashboard() {
 
       <FoodsContainer data-testid="foods-list">
         {foods &&
-          foods.map(food => (
-            <Food
-              key={food.id}
-              food={food}
-              handleDelete={handleDeleteFood}
-              handleEditFood={handleEditFood}
-            />
-          ))}
+          foods.map(food => {
+            return (
+              <Food
+                key={food.id}
+                food={food}
+                handleDelete={handleDeleteFood}
+                handleEditFood={handleEditFood}
+              />
+            );
+          })}
       </FoodsContainer>
     </>
   );
