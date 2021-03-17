@@ -1,12 +1,19 @@
-import { useState } from "react";
+import { HTMLAttributes, useState } from "react";
 import { FiEdit3, FiTrash } from "react-icons/fi";
 
 import { Container } from "./styles";
 import api from "../../services/api";
+import { FoodTypes } from "../../types";
 
-export function Food({ food, handleEditFood, handleDelete }) {
+interface Props {
+  food: FoodTypes;
+  handleEditFood: (food: FoodTypes) => void;
+  handleDelete: (id: number) => void;
+}
+
+export function Food({ food, handleEditFood, handleDelete }: Props) {
   const [isAvailable, setIsAvailable] = useState(food.available);
-
+  const teste = food;
   async function toggleAvaible() {
     await api.put(`/foods/${food.id}`, {
       ...food,
